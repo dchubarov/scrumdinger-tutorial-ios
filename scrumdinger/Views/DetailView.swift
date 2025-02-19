@@ -11,7 +11,7 @@ struct DetailView: View {
   @Binding var scrum: DailyScrum
   @State private var isPresentingEditView = false
   @State private var editingScrum = DailyScrum.emptyScrum
-  
+
   var body: some View {
     List {
       Section(header: Text("Meeting Info")) {
@@ -20,14 +20,14 @@ struct DetailView: View {
             .font(.headline)
             .foregroundColor(.accentColor)
         }
-        
+
         HStack {
           Label("Length", systemImage: "clock")
           Spacer()
           Text("\(scrum.lengthInMinutes) minutes")
         }
         .accessibilityElement(children: .combine)
-        
+
         HStack {
           Label("Theme", systemImage: "paintpalette")
           Spacer()
@@ -38,18 +38,18 @@ struct DetailView: View {
             .cornerRadius(4)
         }
       }
-      
+
       Section(header: Text("Attendees")) {
         ForEach(scrum.attendees) { attendee in
           Label(attendee.name, systemImage: "person")
         }
       }
-      
+
       Section(header: Text("History")) {
-        if (scrum.history.isEmpty) {
+        if scrum.history.isEmpty {
           Label("No meetings yet", systemImage: "calendar.badge.exclamationmark")
         }
-        
+
         ForEach(scrum.history) { history in
           NavigationLink(destination: HistoryView(history: history)) {
             HStack {

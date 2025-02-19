@@ -12,24 +12,24 @@ struct MeetingView: View {
   @StateObject var scrumTimer = ScrumTimer()
   @StateObject var speechRecognizer = SpeechRecognizer()
   @State private var isRecording = false
-  
+
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 16)
         .fill(scrum.theme.mainColor)
-      
+
       VStack {
         MeetingHeaderView(
           secondsElapsed: scrumTimer.secondsElapsed,
           secondsRemaining: scrumTimer.secondsRemaining,
           theme: scrum.theme)
-        
+
         MeetingTimerView(
           speakers: scrumTimer.speakers,
           isRecording: isRecording,
           theme: scrum.theme
         )
-        
+
         MeetingFooterView(
           speakers: scrumTimer.speakers,
           skipAction: scrumTimer.skipSpeaker
@@ -46,7 +46,7 @@ struct MeetingView: View {
       endScrum()
     }
   }
-  
+
   private func startScrum() {
     scrumTimer.reset(lengthInMinutes: scrum.lengthInMinutes, attendees: scrum.attendees)
     speechRecognizer.resetTranscript()
@@ -54,7 +54,7 @@ struct MeetingView: View {
     isRecording = true
     scrumTimer.startScrum()
   }
-  
+
   private func endScrum() {
     scrumTimer.stopScrum()
     speechRecognizer.stopTranscribing()

@@ -11,7 +11,7 @@ struct NewScrumSheet: View {
   @Binding var scrums: [DailyScrum]
   @Binding var isPresentingNewScrumView: Bool
   @State private var newScrum = DailyScrum.emptyScrum
-  
+
   var body: some View {
     NavigationStack {
       DetailEditView(scrum: $newScrum)

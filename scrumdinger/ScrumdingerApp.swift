@@ -11,7 +11,7 @@ import SwiftUI
 struct ScrumdingerApp: App {
   @StateObject private var store = ScrumStore()
   @State private var errorWrapper: ErrorWrapper?
-  
+
   var body: some Scene {
     WindowGroup {
       ScrumsView(scrums: $store.scrums) {

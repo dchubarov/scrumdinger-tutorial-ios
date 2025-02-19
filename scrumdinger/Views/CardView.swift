@@ -9,19 +9,19 @@ import SwiftUI
 
 struct CardView: View {
   let scrum: DailyScrum
-  
+
   init(_ scrum: DailyScrum) {
     self.scrum = scrum
   }
-  
+
   var body: some View {
     VStack(alignment: .leading) {
       Text(scrum.title)
         .font(.headline)
         .accessibilityAddTraits(.isHeader)
-      
+
       Spacer()
-      
+
       HStack {
         Label("\(scrum.attendees.count)", systemImage: "person.3")
           .accessibilityLabel("\(scrum.attendees.count) attendees")
